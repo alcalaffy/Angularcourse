@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Empleado } from './empleado.model';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
+import { DataServices } from './data.services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpleadoServiceService {
 
-  constructor(private showAlert:ServicioEmpleadosService) { }
+  constructor(private showAlert:ServicioEmpleadosService,private dataService:DataServices) { }
   empleados:Empleado[]=[
     new Empleado("David","Alcalá","Tech Lider",120000),
     new Empleado("Bubba","Alcalá","Mascota",1000),
@@ -18,6 +19,7 @@ export class EmpleadoServiceService {
   addEmploye(empleado:Empleado){
     this.showAlert.showMessage("Name: "+empleado.nombre);
     this.empleados.push(empleado);
+    this.dataService.guardarEmpleados(this.empleados);
   }
   findEmployee(id:number){
     let empleado:Empleado=this.empleados[id];

@@ -7,6 +7,9 @@ export class DataServices{
     constructor(private httpClient:HttpClient){       }
     
     guardarEmpleados(empleados:Empleado[]){
-        this.httpClient.post("https://console.firebase.google.com/project/myemployees-a91b6/database/myemployees-a91b6-default-rtdb/data/~2F?hl=es-419/datos.json",empleados);
+        this.httpClient.post("https://myemployees-a91b6-default-rtdb.firebaseio.com/datos.json",empleados).subscribe({
+            next: (v) => console.log('Se han guardado los empleados ' + v),
+            error: (e) => console.log('Error' + e),
+          });
     }
 }
