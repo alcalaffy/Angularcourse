@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div>
+            {{index}} {{empleado.nombre}} {{empleado.apellido}} {{empleado.cargo}} {{empleado.salario}}
+          <a [routerLink]="['/updateEmployee',index]" [queryParams]="{action:'1'}">
+            UPDATE
+          </a>
+          <a [routerLink]="['/updateEmployee',index]" [queryParams]="{action:'2'}" style="margin-left: 5px;">
+            DELETE
+          </a>
+        </div>
+        <app-caracteristicas-empleado (EmployeChar)="addCharacteristic($event)"></app-caracteristicas-empleado>
+        <ul>
+          <li *ngFor="let characteristic of Characteristic">{{characteristic}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
